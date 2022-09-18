@@ -8,3 +8,4 @@ I created this quiz to study the fundamentals of JavaScript. This is a timed exe
 
 ## Link
 
+https://jonpfluger.github.io/javascript-quiz/
