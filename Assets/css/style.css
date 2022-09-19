@@ -17,9 +17,16 @@ h1 {
     font-size: 50px;
 }
 
+section {
+    display: flex;
+    justify-content: center;
+    /* min-height: 40%; */
+}
+
 p {
     margin: 2%;
     padding: 2%;
+    max-width: 70%;
     text-align: center;
 }
 
@@ -31,9 +38,14 @@ p {
 button {
     background-color: blueviolet;
     color: white;
-    margin: 2%;
-    padding: 2%;
+    margin: 1%;
+    padding: 1%;
     border-radius: 25px;
+    cursor: pointer;
+}
+
+button:active {
+    background-color: rgba(200, 53, 237, 0.992)
 }
 
 footer {
@@ -41,4 +53,5 @@ footer {
     justify-content: center;
     align-items: flex-end;
     margin: 2%;
+    /* min-height: 20%; */
 }
