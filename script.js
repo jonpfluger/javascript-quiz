@@ -93,12 +93,16 @@ function gameOver() {
     mySection.appendChild(inputInitials);
     submitButton.textContent = "Submit your initials"
     myFooter.appendChild(submitButton);
-    submitButton.addEventListener("click", function(event) {
+    submitButton.addEventListener("click", function() {
         myH1.textContent = "Initials: " + inputInitials.value.toUpperCase() + "  |  Time Left: " + score + " sec";
+        localStorage.setItem('Initials', inputInitials.value.toUpperCase());
+        localStorage.setItem('Time Left', score);
         mySection.removeChild(inputInitials);
         myFooter.removeChild(submitButton);
         var playAgainBtn = document.createElement("button");
+        var highScore = document.getElementById("highscore");
         playAgainBtn.textContent = "Play again?"
+        highScore.textContent = "Highscore: " + localStorage.getItem('Initials') + "  |  " + localStorage.getItem('Time Left') + " sec";
         mySection.appendChild(playAgainBtn);
         playAgainBtn.addEventListener("click", function () {
             location.reload();

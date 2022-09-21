@@ -26,7 +26,6 @@ h2 {
 section {
     display: flex;
     justify-content: center;
-    /* min-height: 40%; */
 }
 
 p {
@@ -41,6 +40,14 @@ p {
     justify-content: center;
 }
 
+ol {
+    max-width: 50%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 button {
     background-color: blueviolet;
     color: white;
@@ -50,26 +57,12 @@ button {
     cursor: pointer;
 }
 
-ol {
-    max-width: 50%;
-    margin-left: 10%;
-    display: flex;
-    flex-direction: column;
-}
-
-li {
-    cursor: pointer;
-    max-width: 20%;
-    margin-left: 10%;
-    line-height: 50px;
-}
-
-li:hover {
-    color: rgb(0, 157, 189);
-}
-
 button:active {
     background-color: rgba(200, 53, 237, 0.992)
+}
+
+#highscore {
+    margin: auto;
 }
 
 footer {
@@ -77,5 +70,4 @@ footer {
     justify-content: center;
     align-items: flex-end;
     margin: 2%;
-    /* min-height: 20%; */
 }
