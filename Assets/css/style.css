@@ -20,6 +20,7 @@ h1 {
 
 h2 {
     color: rgb(179, 0, 0);
+    position: absolute;
 }
 
 section {
@@ -47,6 +48,24 @@ button {
     padding: 1%;
     border-radius: 25px;
     cursor: pointer;
+}
+
+ol {
+    max-width: 50%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+}
+
+li {
+    cursor: pointer;
+    max-width: 20%;
+    margin-left: 10%;
+    line-height: 50px;
+}
+
+li:hover {
+    color: rgb(0, 157, 189);
 }
 
 button:active {
