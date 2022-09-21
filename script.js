@@ -9,17 +9,13 @@ var footerH4 = document.getElementById("footerh4");
 var timeEl = document.getElementById("timeRemaining");
 var favoriteEl = document.createElement("div");
 var listEl = document.createElement("ol");
-// var li1 = document.createElement("li");
-// var li2 = document.createElement("li");
-// var li3 = document.createElement("li");
-// var li4 = document.createElement("li");
 var answerOptions = document.getElementById("answer-options");
 var currentQuestionIndex = 0;
-
-// var score = 0;
+var score = 0;
 var timerInterval;
 var secondsLeft = 60;
 
+// this variable holds the questions and answers
 var questions = [
     {
         question: "The condition in an if / else statement is enclosed within ____.",
@@ -52,7 +48,9 @@ var questions = [
     }
 ];
 
+
 function handleAnswer() {
+    // checks if the answer is correct
     if (this.value === questions[currentQuestionIndex].answer) {
         console.log("correct!")
     } else {
@@ -63,7 +61,9 @@ function handleAnswer() {
 
     currentQuestionIndex++;
 
+    // this ends the game after the last question, otherwise continue onto the next question
     if (currentQuestionIndex === questions.length) {
+        score = secondsLeft;
         gameOver();
     } else {
         displayQuestions();
@@ -85,15 +85,30 @@ function displayQuestions() {
 function gameOver() {
     clearInterval(timerInterval);
     myH1.textContent = "GAME OVER!"
-    timeEl.textContent = "";
     favoriteEl.removeChild(listEl);
     mySection.removeChild(timeEl);
-    // set score to secondsLeft
-    // display score
-    // add input to take in user initials
+    score = secondsLeft;
+    var inputInitials = document.createElement("input");
+    var submitButton = document.createElement("button");
+    mySection.appendChild(inputInitials);
+    submitButton.textContent = "Submit your initials"
+    myFooter.appendChild(submitButton);
+    submitButton.addEventListener("click", function(event) {
+        myH1.textContent = "Initials: " + inputInitials.value.toUpperCase() + "  |  Time Left: " + score + " sec";
+        mySection.removeChild(inputInitials);
+        myFooter.removeChild(submitButton);
+        var playAgainBtn = document.createElement("button");
+        playAgainBtn.textContent = "Play again?"
+        mySection.appendChild(playAgainBtn);
+        playAgainBtn.addEventListener("click", function () {
+            location.reload();
+        });
+    });
+
+
     // submit button that fires a save score function to grab value of initials and score and set it into local storage
         // create function to get initials and scores from local storage and re-render to page as a high score section
-    // add button to restart game
+
 
 
 }
@@ -112,22 +127,6 @@ startButton.addEventListener("click", function() {
     body.appendChild(favoriteEl);
     favoriteEl.appendChild(listEl);
     listEl.setAttribute("class", "answer-options");
-    // listEl.appendChild(li1);
-    // listEl.appendChild(li2);
-    // listEl.appendChild(li3);
-    // listEl.appendChild(li4);
-    
-    // li1.addEventListener("click", handleAnswer)
-    // li2.addEventListener("click", handleAnswer)
-    // li3.addEventListener("click", handleAnswer)
-    // li4.addEventListener("click", handleAnswer)
-
-    // favoriteEl.setAttribute("style", "font-size:20px;");
-    // listEl.setAttribute("style", "padding:20px;");
-    // li1.setAttribute("style", "padding: 5px; margin-left: 35px;");
-    // li2.setAttribute("style", "padding: 5px; margin-left: 35px;");
-    // li3.setAttribute("style", "padding: 5px; margin-left: 35px;");
-    // li4.setAttribute("style", "padding: 5px; margin-left: 35px;");
 
     // starts the countdown timer
     timerInterval = setInterval(function() {
@@ -136,8 +135,7 @@ startButton.addEventListener("click", function() {
     
         if (secondsLeft === 0) {
             clearInterval(timerInterval);
-            timeEl.textContent = "Your time is up.";
-            // gameOver();
+            gameOver();
         };
     }, 1000);
 });
